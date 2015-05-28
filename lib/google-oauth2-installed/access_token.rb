@@ -11,7 +11,7 @@ module GoogleOauth2Installed
     private
 
     def client
-      @_client ||= OAuth2::Client.new(*oauth2_info, ssl: { verify: false }, client_options: { ssl: { verify: false } } )
+      @_client ||= OAuth2::Client.new(oauth2_info[0], oauth2_info[1], oauth2_info[2].merge(ssl: { verify: false }, client_options: { ssl: { verify: false } }))
     end
 
     def oauth2_info
