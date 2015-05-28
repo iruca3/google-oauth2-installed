@@ -24,7 +24,7 @@ module GoogleOauth2Installed
 
     def client
       oauth2_info = credentials.values_at :oauth2_client_id, :oauth2_client_secret, :oauth2_urls
-      @_client ||= OAuth2::Client.new(*oauth2_info, ssl: { verify: false }, client_options: { ssl: { verify: false } } )
+      @_client ||= OAuth2::Client.new(oauth2_info[0], oauth2_info[1], oauth2_info[2].merge(ssl: { verify: false }, client_options: { ssl: { verify: false } }))
     end
 
     def get_auth_url
